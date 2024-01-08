@@ -1,0 +1,22 @@
+<students>
+  <student>
+    <name>Shrey</name>
+     <age>23</age> 
+     <city>Pune</city>
+  </student>
+  <student>
+    <name>Aju</name> 
+    <age>28</age> 
+    <city>Mumbai</city>
+  </student>
+  <student>
+    <name>Aditya</name> 
+    <age>22</age> 
+    <city>Chennai</city>
+  </student>
+  <student>
+    <name>Anya</name>
+     <age>18</age>
+      <city>Bangalore</city>
+  </student>
+</students>
