@@ -1,0 +1,5 @@
+USE ISS;
+SELECT Count(ManID) AS Count_ID,ManID
+FROM Employees
+GROUP BY ManID
+ORDER BY Count_ID DESC;

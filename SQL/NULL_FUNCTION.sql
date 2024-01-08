@@ -1,0 +1,3 @@
+USE ISS;
+SELECT FirstName,IFNULL(Age, 0) as Check_AGE
+FROM HR;

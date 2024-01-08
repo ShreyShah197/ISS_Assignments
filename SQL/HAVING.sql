@@ -1,0 +1,5 @@
+USE ISS;
+SELECT COUNT(ManID) AS Count, City
+FROM Employees
+GROUP BY ManID
+HAVING COUNT(ManID) > 1;
