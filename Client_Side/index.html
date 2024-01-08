@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css" />
+    <script src="form.js"></script>
+  </head>
+  <body>
+  
+    <form action="" method="post" onsubmit="return validateForm()">
+        <h2>Insuarance Policy Information</h1>
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name" />
+        </li>
+        <br />
+        <li>
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="user_email" required> <span id="email-error" class="error-message"></span> </li>
+          <br />
+      
+          <li>
+            <label for="phone">Phone No:</label>
+            <input type="tel" id="phone" name="tel" required> <span id="phone-error" class="error-message"></span> </li>
+          <br />
+        <li>
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" value="Male" style="width: 10px;margin-left: 30px;">
+            <label for="html" style="width: 10px;">HTML</label><br>
+            <input type="radio"  name="gender" value="Female" style="width: 10px;margin-left: 134px;">
+            <label for="css" style="width: 10px;">CSS</label><br>
+            <input type="radio"  name="gender" value="Other" style="width: 10px;margin-left: 134px;">
+            <label for="javascript" style="width: 10px;">JavaScript</label>
+        </li>
+        <br>
+        <li>
+          <label for="Age">Age:</label>
+          <input type="number" name="age" id="age" min="1" max="100" step="1" />
+        </li>
+        <br />
+        <li>
+          <label for="price">Insuarance Limit: </label>
+          <input
+            type="range"
+            name="price"
+            id="price"
+            min="50000"
+            max="500000"
+            step="100"
+            value="250000"
+          />
+          <output class="price-output" for="price"></output>
+        </li>
+        <br />
+        <li>
+            <label for="Date">Birth Date:</label>
+            <input type="datetime-local" name="datetime" id="datetime" />
+        </li>
+        <br>
+        <li>
+          <label for="expiration">
+            <span>Expiration date:</span>
+            <strong><span aria-label="required">*</span></strong>
+          </label>
+          <input
+            type="text"
+            id="expiration"
+            required
+            placeholder="MM/YY"
+            pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$"
+          />
+        </li>
+        <br />
+        <li>
+          <label for="number">
+            <span>Card number:</span>
+            <strong><span aria-label="required">*</span></strong>
+          </label>
+          <input type="tel" id="number" name="cardnumber" required />
+        </li>
+        <br />
+        <li>
+          <label for="card">
+            <span>Card type:</span>
+          </label>
+          <select id="card" name="usercard">
+            <option value="visa">Visa</option>
+            <option value="mc">Mastercard</option>
+            <option value="amex">American Express</option>
+          </select>
+        </li>
+        <br />
+        <li>
+          <label for="msg">Message:</label>
+          <textarea id="msg" name="user_message">
+Type your Message Here!!!</textarea
+          >
+        </li>
+        <br />
+        <button type="submit">Send your message</button>
+      </ul>
+    </form>
+  </body>
+</html>
