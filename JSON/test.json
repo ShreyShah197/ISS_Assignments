@@ -1,0 +1,17 @@
+{
+    "first name" : "Shrey",
+    "last name" : "Shah",
+    "age" : 21,
+    "city" : "Pune",
+    "Address" : "1304/10,2nd Floor,Sun City",
+    "parents" : [
+        {"Father Name" : "Ketan"},
+        {"Mother Name" : "Vanita"}   
+    ],
+    "students":[
+        {"name":"John", "age":"23", "city":"Agra"},
+        {"name":"Steve", "age":"28", "city":"Delhi"},
+        {"name":"Peter", "age":"32", "city":"Chennai"},
+        {"name":"Chaitanya", "age":"28", "city":"Bangalore"}
+     ]
+}
