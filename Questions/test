@@ -1,29 +1,47 @@
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Cal {
-    private BigDecimal num1;
-    private BigDecimal num2;
-    private BigDecimal num3;
+class C {
+    int id;
+    String name;
+    String color;
 
-    public Cal(BigDecimal num1, BigDecimal num2, BigDecimal num3) {
-        this.num1 = num1;
-        this.num2 = num2;
-        this.num3 = num3;
+    public C(int id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
     }
+}
 
-    public BigDecimal calculateSum() {
-        // Using lambda expression to calculate the sum of num1, num2, and num3
-        return ((BigDecimal a, BigDecimal b, BigDecimal c) -> a.add(b).add(c)).apply(num1, num2, num3);
-    }
-
+public class MergeLists {
     public static void main(String[] args) {
-        BigDecimal num1 = new BigDecimal("10.5");
-        BigDecimal num2 = new BigDecimal("20.3");
-        BigDecimal num3 = new BigDecimal("5.2");
+        List<C> list1 = new ArrayList<>();
+        list1.add(new C(1, "Item1", "Red"));
+        list1.add(new C(2, "Item2", "Green"));
+        list1.add(new C(3, "Item3", "Blue"));
 
-        Cal calculator = new Cal(num1, num2, num3);
-        BigDecimal sum = calculator.calculateSum();
+        List<C> list2 = new ArrayList<>();
+        list2.add(new C(2, "Item2", "Green")); // Duplicate with list1
+        list2.add(new C(4, "Item4", "Yellow"));
+        list2.add(new C(5, "Item5", "Orange"));
 
-        System.out.println("Sum: " + sum);
+        List<C> mergedList = mergeLists(list1, list2);
+
+        // Print the merged list
+        for (C item : mergedList) {
+            System.out.println("ID: " + item.id + ", Name: " + item.name + ", Color: " + item.color);
+        }
+    }
+
+    private static List<C> mergeLists(List<C> list1, List<C> list2) {
+        List<C> mergedList = new ArrayList<>(list1);
+
+        for (C item : list2) {
+            if (!mergedList.contains(item)) {
+                mergedList.add(item);
+            }
+        }
+
+        return mergedList;
     }
 }
