@@ -1,49 +1,29 @@
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.math.BigDecimal;
 
-class C {
-    int id;
-    String name;
-    String color;
+public class Cal {
+    private BigDecimal num1;
+    private BigDecimal num2;
+    private BigDecimal num3;
 
-    public C(int id, String name, String color) {
-        this.id = id;
-        this.name = name;
-        this.color = color;
+    public Cal(BigDecimal num1, BigDecimal num2, BigDecimal num3) {
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
     }
-}
 
-public class ThreadSafeListExample {
+    public BigDecimal calculateSum() {
+        // Using lambda expression to calculate the sum of num1, num2, and num3
+        return ((BigDecimal a, BigDecimal b, BigDecimal c) -> a.add(b).add(c)).apply(num1, num2, num3);
+    }
+
     public static void main(String[] args) {
-        List<C> threadSafeList = new CopyOnWriteArrayList<>();
+        BigDecimal num1 = new BigDecimal("10.5");
+        BigDecimal num2 = new BigDecimal("20.3");
+        BigDecimal num3 = new BigDecimal("5.2");
 
-        // Thread 1
-        Thread thread1 = new Thread(() -> {
-            C data1 = new C(1, "Item1", "Red");
-            threadSafeList.add(data1);
-        });
+        Cal calculator = new Cal(num1, num2, num3);
+        BigDecimal sum = calculator.calculateSum();
 
-        // Thread 2
-        Thread thread2 = new Thread(() -> {
-            C data2 = new C(2, "Item2", "Blue");
-            threadSafeList.add(data2);
-        });
-
-        // Start threads
-        thread1.start();
-        thread2.start();
-
-        try {
-            // Wait for both threads to finish
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Access the thread-safe list after threads finish
-        for (C item : threadSafeList) {
-            System.out.println("ID: " + item.id + ", Name: " + item.name + ", Color: " + item.color);
-        }
+        System.out.println("Sum: " + sum);
     }
 }
