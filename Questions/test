@@ -1,1 +1,49 @@
-km;;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+class C {
+    int id;
+    String name;
+    String color;
+
+    public C(int id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+    }
+}
+
+public class ThreadSafeListExample {
+    public static void main(String[] args) {
+        List<C> threadSafeList = new CopyOnWriteArrayList<>();
+
+        // Thread 1
+        Thread thread1 = new Thread(() -> {
+            C data1 = new C(1, "Item1", "Red");
+            threadSafeList.add(data1);
+        });
+
+        // Thread 2
+        Thread thread2 = new Thread(() -> {
+            C data2 = new C(2, "Item2", "Blue");
+            threadSafeList.add(data2);
+        });
+
+        // Start threads
+        thread1.start();
+        thread2.start();
+
+        try {
+            // Wait for both threads to finish
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Access the thread-safe list after threads finish
+        for (C item : threadSafeList) {
+            System.out.println("ID: " + item.id + ", Name: " + item.name + ", Color: " + item.color);
+        }
+    }
+}
